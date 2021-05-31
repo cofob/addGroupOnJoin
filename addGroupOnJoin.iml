@@ -8,5 +8,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="spigot-1.16.5" level="project" />
+    <orderEntry type="library" name="LuckPerms-Bukkit-5.3.42" level="project" />
   </component>
 </module>

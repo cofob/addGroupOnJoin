@@ -1,3 +1,3 @@
-name: Test_Plugin
-main: com.cofob.test.Main
+name: addGroupOnJoin
+main: com.cofob.agoj.Main
 version: 1.0

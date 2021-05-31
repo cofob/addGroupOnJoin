@@ -1,4 +1,4 @@
-package com.cofob.test;
+package com.cofob.agoj;
 import org.bukkit.plugin.java.JavaPlugin;
 import java.util.logging.Logger;
 
