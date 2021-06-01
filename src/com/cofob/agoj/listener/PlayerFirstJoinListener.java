@@ -17,10 +17,10 @@ public class PlayerFirstJoinListener{
     private final LuckPerms luckPerms;
     private final String perm;
 
-    public PlayerFirstJoinListener(AddGroupOnJoinPlugin plugin, LuckPerms luckPerms) {
+    public PlayerFirstJoinListener(AddGroupOnJoinPlugin plugin, LuckPerms luckPerms, String permission) {
         this.plugin = plugin;
         this.luckPerms = luckPerms;
-        this.perm = "group.old";
+        this.perm = permission;
         System.out.println("|      PERMISSION: "+perm);
     }
 

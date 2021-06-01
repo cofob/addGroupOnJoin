@@ -2,11 +2,11 @@ package com.cofob.agoj.yaml;
 
 
 public class PluginConfig {
-    private String name;
-    public String getName() {
-        return name;
+    private String permission;
+    public String getPermission() {
+        return permission;
     }
-    public void setName(String name) {
-        this.name = name;
+    public void setPermission(String name) {
+        this.permission = name;
     }
 }

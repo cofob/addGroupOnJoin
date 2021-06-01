@@ -2,17 +2,18 @@ package com.cofob.agoj;
 
 import com.cofob.agoj.listener.PlayerFirstJoinListener;
 import com.cofob.agoj.yaml.PluginConfig;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
-
 import net.luckperms.api.LuckPerms;
-
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
+import org.bukkit.Server;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.util.Collections;
 
 
 public class AddGroupOnJoinPlugin extends JavaPlugin {
@@ -20,19 +21,6 @@ public class AddGroupOnJoinPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        File test = new File("!/plugin.yml");
-        BufferedReader f = null;
-        try {
-            f = new BufferedReader(new FileReader( test.getAbsoluteFile()));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        try {
-            assert f != null;
-            System.out.println(f.readLine());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 //        creating folders
         File plugins_folder = new File("plugins");
         File home_folder = new File(plugins_folder, "cofob");
@@ -40,9 +28,35 @@ public class AddGroupOnJoinPlugin extends JavaPlugin {
         File base_folder = new File(home_folder, "agoj");
         if (!base_folder.exists()){base_folder.mkdir();}
         File config_file = new File(base_folder, "config.yml");
+
+        InputStream local_config_file = getClass().getResourceAsStream("/com/cofob/agoj/config.yml");
+        assert local_config_file != null;
+        BufferedReader local_config = new BufferedReader(new InputStreamReader(local_config_file));
+        StringBuilder local_config_text = new StringBuilder();
+        String line = null;
+        try {
+            line = local_config.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        while (true){
+            if (line == null){
+                break;
+            }
+            if (line.equals("")) break;
+            local_config_text.append(line);
+            try {
+                line = local_config.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
         if (!config_file.exists()){
             try {
                 config_file.createNewFile();
+                Files.write(config_file.toPath(), Collections.singleton(local_config_text));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -50,20 +64,24 @@ public class AddGroupOnJoinPlugin extends JavaPlugin {
 
 //        reading config
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
-//        mapper.findAndRegisterModules();
         PluginConfig config = null;
         try {
             config = mapper.readValue(config_file, PluginConfig.class);
+        } catch (UnrecognizedPropertyException e) {
+            System.out.println("|----- AGOJ ERROR -----\n|\n| ERROR ERROR ERROR ERROR ERROR\n| ERROR ERROR ERROR ERROR ERROR\n| ERROR ERROR ERROR ERROR ERROR\n| ");
+            System.out.println("| INVALID CONFIG. YOU CAN GET LATEST HERE - \n|- https://git.3301.su/cofob/addGroupOnJoin/src/branch/master/src/com/cofob/agoj/config.yml\n|");
+            System.out.println("| ERROR ERROR ERROR ERROR ERROR\n| ERROR ERROR ERROR ERROR ERROR\n| ERROR ERROR ERROR ERROR ERROR\n| \n|----------------------");
+            Server.shutdown();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         assert config != null;
-        System.out.println(ReflectionToStringBuilder.toString(config, ToStringStyle.MULTI_LINE_STYLE));
 
 //        defining variables
         version = "v0.0.1";
         LuckPerms luckPerms = getServer().getServicesManager().load(LuckPerms.class);
+        new PlayerFirstJoinListener(this, luckPerms, config.getPermission()).register();
         System.out.println();
         System.out.println("      ___           ___           ___                             ");
         System.out.println("     /\\  \\         /\\__\\         /\\  \\        ___           ");
@@ -80,7 +98,6 @@ public class AddGroupOnJoinPlugin extends JavaPlugin {
         System.out.println("|      AGOJ by cofob");
         System.out.println("|      Updates here https://git.3301.su/cofob/addGroupOnJoin");
         System.out.println("|      VERSION: "+version);
-        new PlayerFirstJoinListener(this, luckPerms).register();
         System.out.println();
     }
 }
