@@ -80,7 +80,7 @@ public class AddGroupOnJoinPlugin extends JavaPlugin {
         assert config != null;
 
 //        defining variables
-        version = "v0.0.1";
+        version = "v0.0.2";
         LuckPerms luckPerms = getServer().getServicesManager().load(LuckPerms.class);
         new PlayerFirstJoinListener(this, luckPerms, config.getPermission()).register();
         System.out.println("|");
