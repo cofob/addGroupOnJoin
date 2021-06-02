@@ -8,6 +8,7 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import net.luckperms.api.LuckPerms;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
+import org.bukkit.Bukkit;
 import org.bukkit.Server;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -71,7 +72,7 @@ public class AddGroupOnJoinPlugin extends JavaPlugin {
             System.out.println("|----- AGOJ ERROR -----\n|\n| ERROR ERROR ERROR ERROR ERROR\n| ERROR ERROR ERROR ERROR ERROR\n| ERROR ERROR ERROR ERROR ERROR\n| ");
             System.out.println("| INVALID CONFIG. YOU CAN GET LATEST HERE - \n|- https://git.3301.su/cofob/addGroupOnJoin/src/branch/master/src/com/cofob/agoj/config.yml\n|");
             System.out.println("| ERROR ERROR ERROR ERROR ERROR\n| ERROR ERROR ERROR ERROR ERROR\n| ERROR ERROR ERROR ERROR ERROR\n| \n|----------------------");
-            Server.shutdown();
+            Bukkit.shutdown();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -82,22 +83,23 @@ public class AddGroupOnJoinPlugin extends JavaPlugin {
         version = "v0.0.1";
         LuckPerms luckPerms = getServer().getServicesManager().load(LuckPerms.class);
         new PlayerFirstJoinListener(this, luckPerms, config.getPermission()).register();
-        System.out.println();
-        System.out.println("      ___           ___           ___                             ");
-        System.out.println("     /\\  \\         /\\__\\         /\\  \\        ___           ");
-        System.out.println("    /::\\  \\       /:/ _/_       /::\\  \\      /\\__\\          ");
-        System.out.println("   /:/\\:\\  \\     /:/ /\\  \\     /:/\\:\\  \\    /:/__/        ");
-        System.out.println("  /:/ /::\\  \\   /:/ /::\\  \\   /:/  \\:\\  \\  /::\\  \\       ");
-        System.out.println(" /:/_/:/\\:\\__\\ /:/__\\/\\:\\__\\ /:/__/ \\:\\__\\ \\/\\:\\  \\ ");
-        System.out.println(" \\:\\/:/  \\/__/ \\:\\  \\ /:/  / \\:\\  \\ /:/  /    \\:\\  \\  ");
-        System.out.println("  \\::/__/       \\:\\  /:/  /   \\:\\  /:/  /      \\:\\__\\     ");
-        System.out.println("   \\:\\  \\        \\:\\/:/  /     \\:\\/:/  /       /:/  /      ");
-        System.out.println("    \\:\\__\\        \\::/  /       \\::/  /       /:/  /         ");
-        System.out.println("     \\/__/         \\/__/         \\/__/        \\/__/           ");
-        System.out.println();
+        System.out.println("|");
+        System.out.println("|         ___           ___           ___                             ");
+        System.out.println("|        /\\  \\         /\\__\\         /\\  \\        ___           ");
+        System.out.println("|       /::\\  \\       /:/ _/_       /::\\  \\      /\\__\\          ");
+        System.out.println("|      /:/\\:\\  \\     /:/ /\\  \\     /:/\\:\\  \\    /:/__/        ");
+        System.out.println("|     /:/ /::\\  \\   /:/ /::\\  \\   /:/  \\:\\  \\  /::\\  \\       ");
+        System.out.println("|    /:/_/:/\\:\\__\\ /:/__\\/\\:\\__\\ /:/__/ \\:\\__\\ \\/\\:\\  \\ ");
+        System.out.println("|    \\:\\/:/  \\/__/ \\:\\  \\ /:/  / \\:\\  \\ /:/  /    \\:\\  \\  ");
+        System.out.println("|     \\::/__/       \\:\\  /:/  /   \\:\\  /:/  /      \\:\\__\\     ");
+        System.out.println("|      \\:\\  \\        \\:\\/:/  /     \\:\\/:/  /       /:/  /      ");
+        System.out.println("|       \\:\\__\\        \\::/  /       \\::/  /       /:/  /         ");
+        System.out.println("|        \\/__/         \\/__/         \\/__/        \\/__/           ");
+        System.out.println("|");
         System.out.println("|      AGOJ by cofob");
         System.out.println("|      Updates here https://git.3301.su/cofob/addGroupOnJoin");
         System.out.println("|      VERSION: "+version);
-        System.out.println();
+        System.out.println("|      PERMISSION: "+config.getPermission());
+        System.out.println("|");
     }
 }

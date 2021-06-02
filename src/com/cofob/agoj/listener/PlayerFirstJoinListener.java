@@ -21,7 +21,6 @@ public class PlayerFirstJoinListener{
         this.plugin = plugin;
         this.luckPerms = luckPerms;
         this.perm = permission;
-        System.out.println("|      PERMISSION: "+perm);
     }
 
     public void register() {
