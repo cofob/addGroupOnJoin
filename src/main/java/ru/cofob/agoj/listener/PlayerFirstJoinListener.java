@@ -1,6 +1,6 @@
-package com.cofob.agoj.listener;
+package ru.cofob.agoj.listener;
 
-import com.cofob.agoj.AddGroupOnJoinPlugin;
+import ru.cofob.agoj.AddGroupOnJoinPlugin;
 
 import net.luckperms.api.LuckPerms;
 import net.luckperms.api.model.user.User;

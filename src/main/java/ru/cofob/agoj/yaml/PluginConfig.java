@@ -1,4 +1,4 @@
-package com.cofob.agoj.yaml;
+package ru.cofob.agoj.yaml;
 
 
 public class PluginConfig {

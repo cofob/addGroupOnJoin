@@ -1,15 +1,12 @@
-package com.cofob.agoj;
+package ru.cofob.agoj;
 
-import com.cofob.agoj.listener.PlayerFirstJoinListener;
-import com.cofob.agoj.yaml.PluginConfig;
+import ru.cofob.agoj.listener.PlayerFirstJoinListener;
+import ru.cofob.agoj.yaml.PluginConfig;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import net.luckperms.api.LuckPerms;
-import org.apache.commons.lang.builder.ReflectionToStringBuilder;
-import org.apache.commons.lang.builder.ToStringStyle;
 import org.bukkit.Bukkit;
-import org.bukkit.Server;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.*;
@@ -30,7 +27,7 @@ public class AddGroupOnJoinPlugin extends JavaPlugin {
         if (!base_folder.exists()){base_folder.mkdir();}
         File config_file = new File(base_folder, "config.yml");
 
-        InputStream local_config_file = getClass().getResourceAsStream("/com/cofob/agoj/config.yml");
+        InputStream local_config_file = getClass().getResourceAsStream("/ru/cofob/agoj/config.yml");
         assert local_config_file != null;
         BufferedReader local_config = new BufferedReader(new InputStreamReader(local_config_file));
         StringBuilder local_config_text = new StringBuilder();

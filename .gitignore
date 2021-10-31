@@ -1,7 +1,9 @@
 .idea
+target
 out
 libs
 lib
+addGroupOnJoin.iml
 
 # ---> Java
 # Compiled class file
