@@ -1,5 +1,7 @@
 # AddGroupOnJoin
 
+![https://ci.cofob.ru/job/addGroupOnJoin/job/Build/lastBuild/](https://ci.cofob.ru/job/addGroupOnJoin/job/Build/badge/icon?style=plastic)
+
 ## Инфо
 
 Простой плагин для добавления права в LuckPerms при заходе на сервер.
