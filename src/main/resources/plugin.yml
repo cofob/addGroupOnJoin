@@ -1,5 +1,5 @@
 name: AddGroupOnJoinPlugin
-main: com.cofob.agoj.AddGroupOnJoinPlugin
+main: ru.cofob.agoj.AddGroupOnJoinPlugin
 version: 0.0.2
 api-version: 1.13
 description: Простой плагин для добавления права в LuckPerms при заходе на сервер.
