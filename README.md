@@ -1,6 +1,6 @@
-# AddGroupOnJoin
-
 [![](https://ci.cofob.ru/job/addGroupOnJoin/job/Build/badge/icon?style=plastic)](https://ci.cofob.ru/job/addGroupOnJoin/job/Build/lastBuild/)
+
+# AddGroupOnJoin
 
 ## Инфо
 
